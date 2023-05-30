@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Implement and invoke hooks to customise forms.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Adds a class field to images for the media embed in text areas
+ */
+function apsc_ckeditor_media_dialog_form_editor_media_dialog_alter(array &$form, FormStateInterface $form_state) {
+  if (isset($form_state->getUserInput()['editor_object'])) {
+    $editor_object = $form_state->getUserInput()['editor_object'];
+    $media_embed_element = $editor_object['attributes'];
+  } else {
+    // Retrieve the user input from form state.
+    $media_embed_element = $form_state->get('media_embed_element');
+  }
+  
+  //hide the default align input
+  $form['align']['#attributes']['class'][] = 'hidden';
+  $form['align']['#default_value'] = 'none';
+  
+  $form['extra_classes'] = [
+    '#title' => t('Align item (Mobile / Desktop)'),
+    '#type' => 'select',
+    '#options' => [
+      '' => t('None'),
+      'inline-media--align-left' => t('Left / Left'),
+      'inline-media--align-centre sm--inline-media--align-left' => t('Centre / Left'),
+      'inline-media--align-centre' => t('Centre / Centre'),
+      'inline-media--align-centre sm--inline-media--align-right' => t('Centre / Right'),
+      'inline-media--align-right' => t('Right / Right'),
+    ],
+    '#default_value' => empty($media_embed_element['class']) ? '' : $media_embed_element['class'],
+    '#parents' => ['attributes', 'class'],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ * Attach module CSS library
+ */
+function apsc_ckeditor_media_dialog_preprocess_node(&$variables) {
+	$variables['#attached']['library'][] = 'apsc_ckeditor_media_dialog/apsc-inline-media';
+}
+
+/**
+ * Implements hook_ckeditor_css_alter().
+ * Load the css in the editor iframe for editors to preview the result
+ */
+function apsc_ckeditor_media_dialog_ckeditor_css_alter(&$css, $editor) {
+  $css[] = drupal_get_path('module', 'apsc_ckeditor_media_dialog') . '/css/inline-media-elements.css';
+}

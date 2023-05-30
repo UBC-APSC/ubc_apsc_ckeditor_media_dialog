@@ -1,0 +1,13 @@
+name: APSC ckeditor media dialog
+type: module
+description: Change the media dialog layout and functionality in ckeditor by invoking form_alter hooks to customise forms. This module offers a point-and-click way to position images in the content by adding classes to the element.
+package: UBC APSC
+dependencies:
+  - ckeditor
+
+core_version_requirement: ^9
+
+# Information added by Drupal.org packaging script on 2020-11-18
+version: '1.0'
+project: 'UBC APSC'
+datestamp: 1633535449

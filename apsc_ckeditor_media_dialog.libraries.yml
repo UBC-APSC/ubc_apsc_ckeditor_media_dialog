@@ -1,0 +1,5 @@
+apsc-inline-media:
+  version: 1.x
+  css:
+    layout:
+      css/inline-media-elements.css: {}
