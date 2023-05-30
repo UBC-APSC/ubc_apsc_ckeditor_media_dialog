@@ -6,13 +6,13 @@
 		"url": "https://github.com/UBC-APSC/apsc_ckeditor_media_dialog",
 		"type": "git",
 		"reference": "master"
-	}
+	},
     "require": {
     },
-    "license": "MIT",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "APSC-Web",
+            "name": "apsc-web",
             "email": "jr.clarke@ubc.ca"
         }
     ]
