@@ -55,3 +55,17 @@ function apsc_ckeditor_media_dialog_preprocess_node(&$variables) {
 function apsc_ckeditor_media_dialog_ckeditor_css_alter(&$css, $editor) {
   $css[] = drupal_get_path('module', 'apsc_ckeditor_media_dialog') . '/css/inline-media-elements.css';
 }
+
+/**
+ * Implements hook_update_projects_alter(&$projects).
+ * Alter the list of projects before fetching data and comparing versions.
+ *
+ * Hide projects from the list to avoid "No available releases found" warnings on the available updates report
+ *
+ * @see \Drupal\update\UpdateManager::getProjects()
+ * @see \Drupal\Core\Utility\ProjectInfo::processInfoList()
+ */
+function apsc_ckeditor_media_dialog_update_projects_alter(&$projects) {
+  // Hide a site-specific module from the list.
+  unset($projects['apsc_ckeditor_media_dialog']);
+}

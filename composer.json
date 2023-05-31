@@ -1,7 +1,7 @@
 {
     "name": "apsc-web/apsc_ckeditor_media_dialog",
     "description": "Add functionality to  the media dialog layout and functionality in ckeditor",
-    "type": "drupal-custom-module",
+    "type": "drupal-module",
 	"source": {
 		"url": "https://github.com/UBC-APSC/apsc_ckeditor_media_dialog",
 		"type": "git",
@@ -13,7 +13,7 @@
     "authors": [
         {
             "name": "apsc-web",
-            "email": "jr.clarke@ubc.ca"
+            "email": "web@apsc.ubc.ca"
         }
     ]
 }
