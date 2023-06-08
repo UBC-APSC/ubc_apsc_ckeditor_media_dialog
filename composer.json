@@ -1,19 +1,18 @@
 {
-    "name": "apsc-web/apsc_ckeditor_media_dialog",
-    "description": "Add functionality to  the media dialog layout and functionality in ckeditor",
-    "type": "drupal-module",
-	"source": {
-		"url": "https://github.com/UBC-APSC/apsc_ckeditor_media_dialog",
-		"type": "git",
-		"reference": "master"
+	"name": "apsc-web/apsc_ckeditor_media_dialog",
+	"description": "Add functionality to  the media dialog layout and functionality in ckeditor",
+	"type": "drupal-module",
+	"require": {
 	},
-    "require": {
-    },
-    "license": "GPL-2.0-or-later",
-    "authors": [
-        {
-            "name": "apsc-web",
-            "email": "web@apsc.ubc.ca"
-        }
-    ]
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "apsc-web",
+			"email": "web@apsc.ubc.ca",
+			"homepage": "https://apsc.ubc.ca"
+		}
+	],
+	"support": {
+		"issues": "https://apsc.ubc.ca/web"
+	}
 }
