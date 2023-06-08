@@ -2,16 +2,35 @@
 
 /**
  * @file
- * Implement and invoke hooks to customise forms.
+ *
+ * The contents of this file are never loaded, or executed, it is purely for
+ * documentation purposes.
+ *
+ * @link https://www.drupal.org/docs/develop/coding-standards/api-documentation-and-comment-standards#hooks
+ * Read the standards for documenting hooks. @endlink
+ *
  */
-
-use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements hook_form_FORM_ID_alter().
- * Adds a class field to images for the media embed in text areas
+ * ubc_apsc_ckeditor_media_dialog_form_editor_media_dialog_alter().
+ *
+ * This hooks allows modules to modify form fields and behaviours.
+ * Current user is editing content and has a media item they want to add a class to.
+ * We include a new form field in the "edit media" form, the text contents of the field
+ * is then placed in the textarea in the "class" attribute for that item.
+ *
+ * @param array &$form
+ *   The array containing form elements
+ *   session.
+ * @param \Drupal\node\FormStateInterface $form_state
+ *   The form state being viewed.
  */
-function apsc_ckeditor_media_dialog_form_editor_media_dialog_alter(array &$form, FormStateInterface $form_state) {
+ 
+/**
+ * Implements hook_form_FORM_ID_alter().
+ * Adds a class field to the "edit media" dialog box in CKEditor text area
+ */
+function ubc_apsc_ckeditor_media_dialog_form_editor_media_dialog_alter(array &$form, FormStateInterface $form_state) {
   if (isset($form_state->getUserInput()['editor_object'])) {
     $editor_object = $form_state->getUserInput()['editor_object'];
     $media_embed_element = $editor_object['attributes'];
@@ -44,28 +63,14 @@ function apsc_ckeditor_media_dialog_form_editor_media_dialog_alter(array &$form,
  * Implements hook_preprocess_node().
  * Attach module CSS library
  */
-function apsc_ckeditor_media_dialog_preprocess_node(&$variables) {
-	$variables['#attached']['library'][] = 'apsc_ckeditor_media_dialog/apsc-inline-media';
+function ubc_apsc_ckeditor_media_dialog_preprocess_node(&$variables) {
+	$variables['#attached']['library'][] = 'ubc_apsc_ckeditor_media_dialog/apsc-inline-media';
 }
 
 /**
  * Implements hook_ckeditor_css_alter().
  * Load the css in the editor iframe for editors to preview the result
  */
-function apsc_ckeditor_media_dialog_ckeditor_css_alter(&$css, $editor) {
-  $css[] = drupal_get_path('module', 'apsc_ckeditor_media_dialog') . '/css/inline-media-elements.css';
-}
-
-/**
- * Implements hook_update_projects_alter(&$projects).
- * Alter the list of projects before fetching data and comparing versions.
- *
- * Hide projects from the list to avoid "No available releases found" warnings on the available updates report
- *
- * @see \Drupal\update\UpdateManager::getProjects()
- * @see \Drupal\Core\Utility\ProjectInfo::processInfoList()
- */
-function apsc_ckeditor_media_dialog_update_projects_alter(&$projects) {
-  // Hide a site-specific module from the list.
-  unset($projects['apsc_ckeditor_media_dialog']);
+function ubc_apsc_ckeditor_media_dialog_ckeditor_css_alter(&$css, $editor) {
+  $css[] = drupal_get_path('module', 'ubc_apsc_ckeditor_media_dialog') . '/css/inline-media-elements.css';
 }
