@@ -1,5 +1,5 @@
 {
-	"name": "apsc-web/apsc_ckeditor_media_dialog",
+	"name": "apsc-web/ubc_apsc_ckeditor_media_dialog",
 	"description": "Add functionality to  the media dialog layout and functionality in ckeditor",
 	"type": "drupal-module",
 	"require": {
