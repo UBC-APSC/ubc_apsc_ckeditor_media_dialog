@@ -12,6 +12,7 @@
 			"homepage": "https://apsc.ubc.ca"
 		}
 	],
+	"minimum-stability": "stable",
 	"support": {
 		"issues": "https://apsc.ubc.ca/web"
 	}
